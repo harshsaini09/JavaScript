@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TASK</title>
+        <style>
+            .taskList{
+                text-align: center;
+            }
+            input{
+                margin-top: 10px;
+            }
+            .shruti,.harsh{
+                margin-left: 4px;
+            }
+            .shruti{
+                width: 162px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="taskList">
+            <div class="addTask">
+                <input type="text" placeholder="Enter Your Task" name="task">
+                <input type="button" value="Add Task" onclick="add(this.parentElement)">
+                <input type="button" value="Update" onclick="update(this.parentElement)" disabled>
+                <input type="button" value="Delete" onclick="del(this.parentElement)" disabled>
+            </div>
+        </div>
+    </body>
+<script>
+let taskList = document.querySelector('.taskList');
+let lastChild;
+if(localStorage.length==0)
+    {
+        let task=[];
+        localStorage.setItem('task',JSON.stringify(task));
+        lastChild = taskList.firstElementChild;
+    }
+else
+{
+    let task = JSON.parse(localStorage.getItem('task'));
+    lastChild = taskList.firstElementChild;
+    for(let i=0;i<task.length;i++)
+    {
+        let newNode = lastChild;
+        newNode.children[0].value=task[i];
+        newNode.children[1].disabled=true;
+        newNode.children[2].disabled=false;
+        newNode.children[3].disabled=false;
+        taskList.insertBefore(newNode,lastChild);
+    }
+}
+function myCreateElement()
+{
+    let addTask = document.createElement('div');
+    addTask.setAttribute('class','addTask');
+    let inputElement = document.createElement('input');
+    inputElement.setAttribute('type','text');
+    inputElement.setAttribute('placeholder','Enter Your Task');
+    inputElement.setAttribute('class','shruti');
+    let btn1 = document.createElement('input');
+    let btn2 = document.createElement('input');
+    let btn3 = document.createElement('input');
+    btn1.setAttribute('type','button');
+    btn1.setAttribute('class','harsh');
+    btn2.setAttribute('type','button');
+    btn2.setAttribute('class','harsh');
+    btn3.setAttribute('type','button');
+    btn3.setAttribute('class','harsh');
+    btn1.setAttribute('value','Add Task');
+    btn2.setAttribute('value','Update');
+    btn3.setAttribute('value','Delete');
+    btn1.setAttribute('onclick','add(this.parentElement)');
+    btn2.setAttribute('onclick','update(this.parentElement)');
+    btn3.setAttribute('onclick','del(this.parentElement)');
+    btn2.disabled=true;
+    btn3.disabled=true;
+//    e = document.createElement('&nbsp;');
+    addTask.appendChild(inputElement);
+//    addTask.appendChild(e);
+    addTask.appendChild(btn1);
+    addTask.appendChild(btn2);
+    addTask.appendChild(btn3);
+    return addTask;
+}
+function add(pEle)
+    {
+        let newNode = myCreateElement();
+        taskList.appendChild(newNode);
+        let task = JSON.parse(localStorage.getItem('task'));
+        task.push(pEle.children[0].value);
+        localStorage.setItem('task',JSON.stringify(task));
+        pEle.children[1].disabled=true;
+        pEle.children[2].disabled=false;
+        pEle.children[3].disabled=false;
+    }
+
+function del(pEle)
+    {
+        let allChild = taskList.children;
+        for(let child=0;child<allChild.length;child++)
+            {
+                if(pEle==allChild[child])
+                    {
+                        let task = JSON.parse(localStorage.getItem('task'));
+                        task.splice(child,1);
+                        localStorage.setItem('task',JSON.stringify(task));
+                        pEle.remove();
+                    }
+            }
+    }
+function update(pEle)
+    {
+        let allChild = taskList.children;
+        for(let child=0;child<allChild.length;child++)
+            {
+                if(pEle==allChild[child])
+                    {
+                        let task = JSON.parse(localStorage.getItem('task'));
+                        task[child]=pEle.children[0].value;
+                        localStorage.setItem('task',JSON.stringify(task));
+                    }
+            }
+    }
+</script>
+</html>

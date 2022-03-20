@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Wrodle</title>
+</head>
+<body>
+    <div class="header">
+        <ion-icon name="help-circle-outline" style="color: gray;"></ion-icon>
+        <h1>wordle</h1>
+        <ion-icon name="settings" style="color: gray;"></ion-icon>
+    </div>
+    <section class="inputs">
+        <form class="d-flex justify-content-evenly">
+            <div class="input" id="screen1"></div>
+            <div class="input" id="screen2"></div>
+            <div class="input" id="screen3"></div>
+            <div class="input" id="screen4"></div>
+            <div class="input" id="screen5"></div>
+        </form>
+        <form action="post" class="d-flex justify-content-evenly">
+            <div class="input" id="screen6"></div>
+            <div class="input" id="screen7"></div>
+            <div class="input" id="screen8"></div>
+            <div class="input" id="screen9"></div>
+            <div class="input" id="screen10"></div>
+        </form>
+        <form action="post" class="d-flex justify-content-evenly">
+            <div class="input" id="screen11"></div>
+            <div class="input" id="screen12"></div>
+            <div class="input" id="screen13"></div>
+            <div class="input" id="screen14"></div>
+            <div class="input" id="screen15"></div>
+        </form>
+        <form action="post" class="d-flex justify-content-evenly">
+            <div class="input" id="screen16"></div>
+            <div class="input" id="screen17"></div>
+            <div class="input" id="screen18"></div>
+            <div class="input" id="screen19"></div>
+            <div class="input" id="screen20"></div>
+        </form>
+        <form action="post" class="d-flex justify-content-evenly">
+            <div class="input" id="screen21"></div>
+            <div class="input" id="screen22"></div>
+            <div class="input" id="screen23"></div>
+            <div class="input" id="screen24"></div>
+            <div class="input" id="screen25"></div>
+        </form>
+        <form action="post" class="d-flex justify-content-evenly">
+            <div class="input" id="screen26"></div>
+            <div class="input" id="screen27"></div>
+            <div class="input" id="screen28"></div>
+            <div class="input" id="screen29"></div>
+            <div class="input" id="screen30"></div>
+        </form>
+    </section>
+    <section class="section2">
+    <div>
+        <div class="keyboard d-flex justify-content-center" style="margin:5% 2% 0 2%; ">
+            <button style="padding-left: 4%;" onclick="dis('Q')">Q</button>
+            <button style="padding-left: 4%;" onclick="dis('W')">W</button>
+            <button style="padding-left: 4%;" onclick="dis('E')">E</button>
+            <button style="padding-left: 4%;" onclick="dis('E')">R</button>
+            <button style="padding-left: 4%;" onclick="dis('T')">T</button>
+            <button style="padding-left: 4%;" onclick="dis('Y')">Y</button>
+            <button style="padding-left: 4%;" onclick="dis('U')">U</button>
+            <button style="padding-left: 4%;" onclick="dis('I')">I</button>
+            <button style="padding-left: 4%;" onclick="dis('O')">O</button>
+            <button style="padding-left: 4%;" onclick="dis('P')">P</button><br>
+        </div>
+    </div>
+    <div class="keyboard d-flex justify-content-center" style="margin:5% 5% 0 5%;">
+        <button style="padding-left: 4%;" onclick="dis('A')">A</button>
+        <button style="padding-left: 4%;" onclick="dis('S')">S</button>
+        <button style="padding-left: 4%;" onclick="dis('D')">D</button>
+        <button style="padding-left: 4%;" onclick="dis('F')">F</button>
+        <button style="padding-left: 4%;" onclick="dis('G')">G</button>
+        <button style="padding-left: 4%;" onclick="dis('H')">H</button>
+        <button style="padding-left: 4%;" onclick="dis('J')">J</button>
+        <button style="padding-left: 4%;" onclick="dis('K')">K</button>
+        <button style="padding-left: 4%;" onclick="dis('L')">L</button>
+    </div>
+    <div>
+        <div class="keyboard d-flex justify-content-center container" style="margin:5% 2% 2% 2%;">
+            <button style="width: 80px; padding-left: 3%;" onclick="enter()">ENTER</button>
+            <button style="padding-left: 4%;" onclick="dis('Z')">Z</button>
+            <button style="padding-left: 4%;" onclick="dis('X')">X</button>
+            <button style="padding-left: 4%;" onclick="dis('C')">C</button>
+            <button style="padding-left: 4%;" onclick="dis('V')">V</button>
+            <button style="padding-left: 4%;" onclick="dis('B')">B</button>
+            <button style="padding-left: 4%;" onclick="dis('N')">N</button>
+            <button style="padding-left: 4%;" onclick="dis('M')">M</button>
+            <button style="padding-left: 4%;" onclick="dis('O')">O</button>
+            <button style="font-size: 30px; width: 80px; padding-left: 5%; padding-top: 1.3%;" onclick="back()"><ion-icon name="backspace-outline"></ion-icon></button><br>
+        </div>
+    </div>
+</section>
+</body>
+<script src="LOGIC.js"></script>
+</html>

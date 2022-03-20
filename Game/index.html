@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Match Number</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.container{
+	font-size: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.content{
+	border: 2px solid black;
+	padding:10px;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+#score{
+	margin-bottom: 5%;
+}
+button{
+	margin-bottom: 10%;
+	background-color: white;
+	border: 1px solid green;
+	width: 70px;
+	height: 30px;
+	border-radius: 10px;
+	cursor: pointer;
+}
+button:active,button:hover{
+	background-color: greenyellow;
+	border: 1px solid transparent;
+	transform: scale(1.1);
+	transition: all 0.5s ease-in-out;
+}
+#que{
+	margin-bottom: 1%;
+}
+img{
+	border-radius: 30px;
+}
+</style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="content">
+                <span id="score">Score 0/10</span>
+                <div id="que">4 muffins?</div>
+                <div id="dummy">
+                    <button value="1"><i class="fa fa-check" aria-hidden="true"></i></button>
+                    <button value="0"><i class="fa fa-times" aria-hidden="true"></i></button>
+                </div>
+                <img src="" width="360px" height="360px" id="image">
+            </div>
+        </div>
+		
+		<br>
+		<input type="button" onclick="play()" value="Play" style="background-color:pink;display:block;width:10%;margin:20px auto;border:none;padding:10px;border-radius:5px;">
+		
+<script>
+
+document.querySelector(".content").style.display="none";
+
+let timerId;
+let i=0;
+let j=0;
+let ele;
+let count=0;
+
+let arr = [['1.jpg','4 muffins?',1],['2.jpg','7 Candles?',0],['3.jpg','5 Chocolates?',1],['4.jpg','6 Lolypop?',1],['5.jpg','6 Pizza Slice?',0],['6.jpeg','6 person?',1],['7.jpg','8 Goats?',1],['8.jpg','6 Devices?',1],['9.jpg','4 Deers?',0],['10.jpg','10 Rings?',0]];
+
+function play()
+{
+	document.querySelector(".content").style.display="flex";
+	
+	document.getElementById('image').src = arr[i][0];
+	document.getElementById('que').innerHTML = arr[i][1];	
+	
+	document.getElementById("dummy").children[0].setAttribute('onclick',`check(this,${i})`);
+	document.getElementById("dummy").children[1].setAttribute('onclick',`check(this,${i})`);
+		
+	i++;
+	
+	timerId=setInterval(myFun,5000);	
+}
+
+function myFun()
+{
+	document.getElementById('image').src = arr[i][0];
+	document.getElementById('que').innerHTML = arr[i][1];
+	
+	document.getElementById("dummy").children[0].setAttribute('onclick',`check(this,${i})`);
+	document.getElementById("dummy").children[1].setAttribute('onclick',`check(this,${i})`);	
+	
+	document.getElementById("dummy").children[0].disabled=false;
+	document.getElementById("dummy").children[1].disabled=false;
+	
+	i++;
+	
+	if(i==10)
+	{
+		clearTimeout(timerId);
+		showScore();
+	}
+}
+
+function check(v,i)
+{
+	//alert(v.value);
+	v.setAttribute('disabled','true');
+	
+	//alert(arr[i][2]+" - "+v.value);
+	
+	if(arr[i][2]==v.value)
+	{
+		count++;
+	}
+	else
+	{
+		count--;
+	}
+	
+	document.getElementById('score').innerHTML = `Score ${count}/10`;	
+}
+
+function score()
+{
+	if(arr[j][2]==ele)
+	{
+		count++;
+	}
+	document.getElementById('score').innerHTML = `Score ${count}/10`;
+	console.log(arr[j][2]);
+	console.log(ele);
+}
+
+function showScore()
+{
+	alert(count);
+}
+
+
+
+
+</script>
+
+	</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE>
+<html>
+	<head>
+	</head>
+	<body id="body">
+		<input type="text" id="task" placeholder="Enter Task To Add">
+		<input type="submit" value="Add" onclick="addTask()">
+		
+		<table id="table" border='1'>
+			
+		</table>
+	</body>
+	<script>
+	if(localStorage.getItem('key')==null){
+		localStorage.setItem('key','0');
+	}
+	showTable();
+	function addTask()
+	{
+		let i = parseInt(localStorage.getItem('key'))+1;
+		let t = document.getElementById('task').value;
+		localStorage.setItem("task"+i,t);
+		localStorage.setItem('key',i);
+		showTable();
+	}
+	
+	function removeTask(y)
+	{
+		localStorage.removeItem(y);
+		document.getElementById('r'+y).remove();
+	}
+	
+	//console.log(localStorage.length)
+	function showTable()
+	{
+		//console.log(z);
+		document.getElementById('table').innerHTML='';
+		document.getElementById('table').innerHTML+="<tr><td>Task</td><td>Action</td></tr>";
+		for(let j=0;j<localStorage.length;j++)
+		{			
+			let key=localStorage.key(j);
+			if(key!='key')
+			{
+				var table = "<tr id='r"+key+"'><td>";
+				table+=localStorage.getItem(key);
+				table+="</td><td><input type='button' id='"+key+"' value='Remove' onclick='removeTask(this.id)'>";
+				table+="</td></tr>";
+				document.getElementById('table').innerHTML+=table;
+			}
+		}
+	}		//localStorage.clear();
+	</script>
+</html>

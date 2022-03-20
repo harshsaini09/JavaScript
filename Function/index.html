@@ -1,0 +1,111 @@
+<!--
+    Developer:- Harsh Saini
+    Date:- 28/01/2021
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Function</title>
+</head>
+<body>
+    <div id = "sumFD"></div>
+    <div id = "sumFE"></div>
+    <div id = "sumAFS"></div>
+    <div id = "sumAFS"></div>
+    <div id = "sumAFM"></div>
+    <div id = "Array_Des"></div>
+    <div id = "a"></div>
+</body>
+
+<script>
+// Desecration of variables
+
+const arr = [12,324,23,12,13.5,34,54];
+const arrDisturction = ['apple','i','will','not','like']
+
+
+// Function Declaration
+// Spread
+//--------------------------
+    function sumFD (...input){
+        let sum=0;
+        for(let i of input)
+        {
+            sum = sum + i;
+        }
+        return sum
+    }
+document.getElementById("sumFD").innerHTML =  "1) Sum by Function Defition: " + sumFD(3,4,3,4,6,3,5,5,7)
+
+
+// Function Expression
+//--------------------------
+
+
+const sumFE = function(a,b){
+            console.log("Hellooooooo");
+            return a+b;
+        }
+document.getElementById("sumFE").innerHTML =  "2) Sum by Function Expression: " + sumFE(4,4);
+
+
+// Arrow Function Single Line 
+//--------------------------
+
+const sumAFS = (a,b) =>  a+b;
+document.getElementById("sumAFS").innerHTML =  "3) Sum by Function single line Arrow Function: " + sumAFS(10,4);
+
+//Arrow Function MultiLine
+//--------------------------
+
+const sumAFM = (a,b) =>{
+    console.log("MultiLine Arrow Function");
+    return a+b;
+}
+document.getElementById("sumAFM").innerHTML =  "4) Sum by Function MultiLine Arrow Function: " + sumAFM(1,4);
+
+//Anynomous Function
+//--------------------------
+
+arr.forEach(function(ele){
+    console.log(ele);
+}
+);
+
+// Array Destructuring 
+//--------------------------
+
+function Array_Destructuring(){
+    let [first,second] = arrDisturction;
+    console.log(first);
+    console.log(second);
+    let [name, age , profession] = ["Harsh", "20", "Student"];
+    document.getElementById("a").innerHTML = "Profession of " +name+ " is "+profession;
+    return first;
+}
+document.getElementById("Array_Des").innerHTML =  "5) Array Destructuring: " + Array_Destructuring();
+
+    
+a = "Harsh Saini";
+//regexp1=/^[a-zA-z]+([\s][a-zA-Z])*$/;
+//regexp1=/[A-z]+([\s][A-z])*$/;
+regexp1=/^[a-zA-Z0-9]*$/
+if(regexp1.test(a))
+{
+    console.log("True");
+    console.log(regexp1);
+    console.log(a);
+}
+else
+{
+    console.log("False");
+    console.log(regexp1);
+    console.log(a);
+}
+
+</script>
+</html>

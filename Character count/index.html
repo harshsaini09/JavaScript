@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Count</title>
+</head>
+<body>
+    <h1>Character Count</h1>
+</body>
+<script>
+
+//----------------------------------------------------------------------
+let a1 = "This is Test Case".toLowerCase().split('');
+let a2 = "abcdefghijklmnopqrstuvwxyz".split('');
+for(let i=0;i<a2.length;i++)
+{
+    let count = 0;
+        for(let j=0;j<a1.length;j++)
+        {
+            if(a2[i] == a1[j])
+                count++;
+        }
+    if(count!=0)
+        console.log(`${a2[i].toUpperCase()} :- `+count);
+}
+//----------------------------------------------------------------------    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+/*
+let name1 = "This is Test Case";
+let arr1 = name1.toLowerCase().split('');
+let Final_array = [];
+let coun;
+
+for(let i=0;i<arr1.length;i++)
+{
+    count = 0;
+    if(arr1[i] != ' ')
+    {
+        for(let j=0;j<arr1.length;j++)
+        {
+            if(arr1[i] == arr1[j])
+                count++;
+        }
+    }
+}
+Final_array = arr1.filter(function(item, pos, self) {
+    return self.indexOf(item) == pos;
+})
+for(let i=0;i<Final_array.length;i++)
+{
+    if(Final_array[i] != ' ')
+    console.log(`${Final_array[i]} :- `+count);
+}
+    
+    */
+    
+/*
+var a = [1, 2, 3, 4, 5, 3,2,2,2,2,2,32,]
+uniqueArray = a.filter(function(item, pos, self) {
+    return self.indexOf(item) == pos;
+})
+console.log(a);
+console.log(uniqueArray);
+
+Final_array = arr1.filter(function(item, pos, self) {
+        console.log(`${arr1[i]} :- `+count);
+        return self.indexOf(item) == pos;
+    })
+
+
+*/
+</script>
+</html>

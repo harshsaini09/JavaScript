@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body{
+            text-align: center;
+            margin-top: 10%;
+        }
+        input{
+            margin-left: 2%;
+            margin-top: 2%;
+            padding: 1%;
+        }
+        .add,.update,.del{
+            margin-left: 2%;
+            border: 2px solid black;
+            padding: 1%;
+        }
+        .add{
+            background-color: #34bf49;
+        }
+        .update{
+            
+            background-color: #0099e5;
+        }
+        .del{
+            background-color: #ff4c4c;
+            
+        }
+    </style>
+</head> 
+<body>
+</body>
+<script>	
+if(localStorage.getItem('marks')==null)
+{
+	let marksList = [];
+	localStorage.setItem('marks',JSON.stringify(marksList));
+}
+show();
+function show()
+{
+	document.body.innerHTML='';
+	let num = JSON.parse(localStorage.getItem('marks'));
+	let len = num.length;
+	for(let i=0;i<=len;i++)
+	{
+		let z = document.createElement("div");
+		z.setAttribute('class',"c"+i);
+		document.body.appendChild(z);
+		
+		a = document.createElement('input')
+		a.setAttribute('type','text');
+        a.setAttribute('placeholder','Enter your task');
+		a.setAttribute('onclick','nothing(this.parentNode)');
+		if(i!=len)
+		{
+			a.setAttribute('value',num[i]);
+		}
+		b = document.createElement('input')
+		b.setAttribute('type','button');
+        b.setAttribute('class','add');
+		b.setAttribute('value','Add');
+		b.setAttribute('onclick','add(this.parentNode)');
+		b.setAttribute('disabled',true);
+		
+		c = document.createElement('input')
+		c.setAttribute('type','button');
+		c.setAttribute('value','Update');
+        c.setAttribute('class','update');
+		c.setAttribute('onclick','update(this.parentNode)');
+		c.setAttribute('disabled',true);
+		
+		d = document.createElement('input')
+		d.setAttribute('type','button');
+		d.setAttribute('value','Delete');
+        d.setAttribute('class','del');
+		d.setAttribute('onclick','remove(this.parentNode)');
+		d.setAttribute('disabled',true);
+		
+		e = document.createElement('br')
+		
+		document.querySelector(".c"+i).appendChild(a)
+		document.querySelector(".c"+i).appendChild(b)
+		document.querySelector(".c"+i).appendChild(c)
+		document.querySelector(".c"+i).appendChild(d)
+		document.querySelector(".c"+i).appendChild(e)
+		if(i!=len)
+		{
+			document.querySelectorAll(".c"+i+" input")[2].disabled = false;
+			document.querySelectorAll(".c"+i+" input")[3].disabled = false;
+		}
+	}
+}
+function nothing(x)
+{
+	if(document.querySelectorAll("."+x.className+" input")[0].value=='')
+	{
+		document.querySelectorAll("."+x.className+" input")[1].disabled = false;	
+	}	
+}
+function add(p)
+{
+	let num = JSON.parse(localStorage.getItem('marks'))
+	k=document.querySelectorAll("."+p.className+" input")[0].value;	
+	num.push(k);
+	localStorage.setItem('marks',JSON.stringify(num));
+	show();
+}
+function update(x)
+{
+	let k=document.querySelectorAll("."+x.className+" input")[0].value;
+	let num = JSON.parse(localStorage.getItem('marks'));
+	let i = parseInt(x.className[1]);
+	num[i]=k;
+	localStorage.setItem('marks',JSON.stringify(num));
+}
+function remove(x)
+{
+	const elements = document.getElementsByClassName(x.className);
+    while(elements.length > 0)
+    {
+        elements[0].parentNode.removeChild(elements[0]);
+    }
+	let num = JSON.parse(localStorage.getItem('marks'));
+	let i = parseInt(x.className[1]);
+	num.splice(i,1);
+	localStorage.setItem('marks',JSON.stringify(num));
+}
+</script>
+</html>
