@@ -1,0 +1,46 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+h1{
+    text-align: center;
+    margin-top: 5%;
+    text-transform: uppercase;
+    font-family: cursive;
+    margin: 0px;
+    padding: 0px;
+    
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+}
+form{
+    background: linear-gradient(to right, #33ccff 0%, #ff99cc 100%);
+    display: flex;
+    flex-wrap: wrap;
+}
+.input-number{
+    margin: 10px 5px 15px 6px;
+}
+
+.gernral-button,.zero,.equal{
+    background: rgba(0, 0, 169, 0.3);
+    border: none;
+    font-size: 26px;
+    color: white;
+    width: 50px;
+    margin: 0 0 10px 15px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+.gernral-button:hover,.zero:hover,.equal:hover{
+    background: rgba(0, 0, 255, 0.48);
+}
+.gernral-button:active,.zero:active,.equal:active{
+    background: rgba(0, 0, 169, 0.3);
+    cursor: none;
+}
+.zero{
+    width: 116px;
+}
