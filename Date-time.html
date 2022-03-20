@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Date-time</title>
+        <style>
+            body{
+                display: flex;
+/*                width: 100vh;*/
+                height: 100vh;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+        </style>
+    </head>
+    <body>
+            Date 1<input type="date" id="D1"><br>
+            Date 2<input type="date" id="D2"><br>
+            <input type="submit" id="D2" onclick="myfun()" value="Submit"><br>
+            <span id="one"></span>
+    </body>
+    <script>
+        let month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+        function myfun()
+        {
+            let dt1 = document.getElementById("D1").value
+            let dt2 = document.getElementById("D2").value
+            let dt1_arr = dt1.split('-');
+            let dt2_arr = dt2.split('-');
+            let d1 = parseInt(dt1_arr[2]);
+            let m1 = parseInt(dt1_arr[1]);
+            let y1 = parseInt(dt1_arr[0]);
+            let d2 = parseInt(dt2_arr[2]);
+            let m2= parseInt(dt2_arr[1]);
+            let y2= parseInt(dt2_arr[0]);
+            if(d1 > d2)
+            {
+                d2 = d2 + month[m2 - 1];
+                m2 = m2 - 1;
+            }
+            if(m1 > m2)
+            {
+                m2 = m2 + 12;
+                y2 = y2 - 1;
+            }
+            let d = d2 - d1;
+            let m = m2 - m1;
+            let y = y2 - y1;
+            document.getElementById('one').innerHTML = `${y} Year ${m} Month ${d} Day `;
+        }
+    </script>
+</html>
